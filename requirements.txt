@@ -1,0 +1,4 @@
+# pip install -r requirements.txt
+slack-bolt
+langflow
+python-dotenv
