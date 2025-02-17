@@ -35,7 +35,6 @@ Integrating **Langflow with Slack** through a dedicated app unlocks a new level 
    - In "OAuth & Permissions":
      - Add bot token scopes: 
        - `chat:write` (to send messages)
-       - `app_mentions:read` (to detect mentions)
        - `channels:history` (to read channel messages)
      - Install the app to your workspace
      - Copy the "Bot User OAuth Token" (starts with `xoxb-`)
@@ -46,7 +45,6 @@ Integrating **Langflow with Slack** through a dedicated app unlocks a new level 
    - In "Event Subscriptions":
      - Toggle "Enable Events" to On
      - Subscribe to bot events:
-       - `app_mention` (for @mentions)
        - `message.im` (listens for messages in your app's DMs with users)
        - `message.channels` (listens for messages in public channels that your app is added to)
        - `message.groups` (listens for messages in public channels that your app is added to)
