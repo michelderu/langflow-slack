@@ -11,16 +11,13 @@ load_dotenv(override=True)
 # Initialize the Slack app
 app = App(token=os.environ["SLACK_BOT_TOKEN"])
 
-# Langflow API configuration
-LANGFLOW_API_URL = os.environ.get("LANGFLOW_API_URL")
-
 def query_langflow(message: str) -> str:
     """
     Send a query to Langflow and get the response
     """
     try:
         # Endpoint for your specific flow
-        url = f"{LANGFLOW_API_URL}"
+        url = os.environ.get("LANGFLOW_API_ENDPOINT")
         
         # Prepare the inputs based on your flow's requirements
         payload = {
