@@ -3,7 +3,7 @@ from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from dotenv import load_dotenv
 import requests
-import json
+from typing import Optional
 
 # Load environment variables
 load_dotenv(override=True)
@@ -11,33 +11,30 @@ load_dotenv(override=True)
 # Initialize the Slack app
 app = App(token=os.environ["SLACK_BOT_TOKEN"])
 
-def query_langflow(message: str) -> str:
+# Run the Langflow flow
+def run_flow(message: str, endpoint: str, output_type: str = "chat", input_type: str = "chat", tweaks: Optional[dict] = None, api_key: Optional[str] = None) -> dict:
     """
-    Send a query to Langflow and get the response
+    Run a flow with a given message and optional tweaks.
+
+    :param message: The message to send to the flow
+    :param endpoint: The ID or the endpoint name of the flow
+    :param tweaks: Optional tweaks to customize the flow
+    :return: The JSON response from the flow
     """
-    try:
-        # Endpoint for your specific flow
-        url = os.environ.get("LANGFLOW_API_ENDPOINT")
-        
-        # Prepare the inputs based on your flow's requirements
-        payload = {
-            "input_value": message,
-            "output_type": "chat",
-            "input_type": "chat"
-        }
-        
-        response = requests.post(url, json=payload)
-        response.raise_for_status()
-        
-        print (f"Calling Langflow {url} with message {message}")
-        result = response.json()
-        result = result['outputs'][0]['outputs'][0]['outputs']['message']['message']['text']
-        print (f"Response from Langflow: {result}")
-        return result
-    
-    except requests.exceptions.RequestException as e:
-        print(f"Error querying Langflow: {e}")
-        return "Sorry, I encountered an error while processing your request."
+    api_url = f"{os.environ["LANGFLOW_BASE_API_URL"]}/api/v1/run/{endpoint}"
+
+    payload = {
+        "input_value": message,
+        "output_type": output_type,
+        "input_type": input_type,
+    }
+    headers = None
+    if tweaks:
+        payload["tweaks"] = tweaks
+    if api_key:
+        headers = {"x-api-key": api_key}
+    response = requests.post(api_url, json=payload, headers=headers)
+    return response.json()
 
 # Listens to incoming messages that contain "Hello!"
 # To learn available listener arguments,
@@ -73,8 +70,23 @@ def handle_direct_message(event, say):
     # Extract the message text (remove the bot mention)
     message = event['text']
 
-    # Get response from Langflow
-    response = query_langflow(message)
+    # You can tweak the flow by adding a tweaks dictionary
+    # e.g {"OpenAI-XXXXX": {"model_name": "gpt-4"}}
+    TWEAKS = {
+        "ChatInput-yBz3m": {},
+        "ChatOutput-zpNTB": {},
+        "OpenAIModel-rBhAr": {}
+    }
+
+    # Call langflow to get the response
+    try:
+        response = run_flow(message=message, endpoint=os.environ["LANGFLOW_FLOW_ID"], tweaks=TWEAKS)
+        response = response['outputs'][0]['outputs'][0]['outputs']['message']['message']['text']
+        print (f"Response from Langflow: {response}")
+    
+    except requests.exceptions.RequestException as e:
+        response = "Sorry, I encountered an error calling Langflow."
+        print(f"Error querying Langflow: {e}")
 
     # Reply to the direct message with markdown enabled
     say(
