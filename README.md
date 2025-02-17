@@ -65,23 +65,25 @@ Integrating **Langflow with Slack** through a dedicated app unlocks a new level 
 
 ## Usage
 
-1. Start the Slack bot:
+1. Create or reuse a Langflow flow
+
+   You can also use a simple flow from this repository: [Langflow Slack Integration Test](https://github.com/langchain-ai/langflow/blob/main/langflow-slack/Slack-Integration-Test.json)
+
+   Make sure to set the `LANGFLOW_API_URL` environment variable to the URL of the Langflow Flow.
+
+2. Start the Slack bot:
    ```bash
    python slack_bot.py
    ```
 
-2. Create or reuse a Langflow flow
+3. Invite the bot to your desired Slack channel
 
-   You can also use a simple flow from this repository: [Langflow Slack Integration Test](https://github.com/langchain-ai/langflow/blob/main/langflow-slack/Slack-Integration-Test.json)
-
-2. Invite the bot to your desired Slack channel
-
-3. Test the bot by sending a message to it:
+4. Test the bot by sending a message to it:
    ```
    Hello!
    ```
 
-4. Now call your Langflow flow by asking a question:
+5. Now call your Langflow flow by asking a question:
    ```
    What is Langflow all about?
    ```
