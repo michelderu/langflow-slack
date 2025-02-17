@@ -61,8 +61,7 @@ Integrating **Langflow with Slack** through a dedicated app unlocks a new level 
    - Add your Slack tokens:
      - `SLACK_BOT_TOKEN`: The Bot User OAuth Token (starts with `xoxb-`)
      - `SLACK_APP_TOKEN`: The App-Level Token (starts with `xapp-`)
-     - `LANGFLOW_API_HOST`: Your Langflow instance URL
-     - `FLOW_ID`: The ID of your Langflow flow
+     - `LANGFLOW_API_URL`: Your Langflow Flow URL
 
 ## Usage
 
