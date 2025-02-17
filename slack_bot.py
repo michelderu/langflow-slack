@@ -36,39 +36,30 @@ def run_flow(message: str, endpoint: str, output_type: str = "chat", input_type:
     response = requests.post(api_url, json=payload, headers=headers)
     return response.json()
 
-# Listens to incoming messages that contain "Hello!"
-# To learn available listener arguments,
-# visit https://tools.slack.dev/bolt-python/api-docs/slack_bolt/kwargs_injection/args.html
+# Listens to incoming messages that contain "Hello!". Just to test the bot
 @app.message("Hello!")
-def message_hello(event, say):
-    print(f"Mentioned in channel: {event}")
-    # say() sends a message to the channel where the event was triggered with markdown
-    say(
-        text=f"Hey there <@{event['user']}>!",
-        blocks=[
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": f"Hey there <@{event['user']}>!"
-                }
-            }
-        ]
-    )
+def message_hello(message, say):
+    """
+    Handle messages that contain "Hello!"
+    Just to test the bot.
+    """
+    print(f"Mentioned in channel: {message}")
+    say(f"Hey there <@{message['user']}>!")
 
+# Listen to all messages in a channel that the bot is added to
 @app.event("message")
-def handle_direct_message(event, say):
+def handle_direct_message(message, say):
     """
     Handle direct messages to the bot
     """
-    print(f"Direct message: {event}")
+    print(f"Direct message: {message}")
 
     # Ignore messages from the bot itself
-    if "bot_id" in event:
+    if "bot_id" in message:
         return
     
     # Extract the message text (remove the bot mention)
-    message = event['text']
+    message = message['text']
 
     # You can tweak the flow by adding a tweaks dictionary
     # e.g {"OpenAI-XXXXX": {"model_name": "gpt-4"}}
