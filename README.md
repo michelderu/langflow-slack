@@ -2,13 +2,13 @@
 
 In today’s dynamic workplace, efficiency and intelligent automation are paramount. [Langflow](https://github.com/langflow/langflow) brings the power of advanced language models and **AI agents** directly into your **Slack workflows**, enabling seamless automation, intelligent responses, and real-time assistance without ever leaving your chat window.
 
+> Embrace the power of Langflow in your Slack workflow to achieve seamless automation, smarter collaboration, and unparalleled efficiency.
+
 With Langflow, you can design and deploy sophisticated agents capable of handling a wide range of tasks – from answering complex queries and summarizing lengthy discussions to managing project workflows and retrieving critical data from integrated tools. The flexibility of Langflow allows you to build custom agents tailored to your team’s unique needs, ensuring that every interaction is smart, efficient, and context-aware.
 
 ![Slack Integration](./assets/langflow-slack-integration.png)
 
 Integrating **Langflow with Slack** through a dedicated app unlocks a new level of productivity. The app acts as a bridge, allowing Slack users to call Langflow agents directly within their channels. Whether you need a quick report, an automated follow-up, or AI-driven insights, Langflow agents are just a command away. This integration not only saves time but also enhances collaboration by providing instant access to AI-powered assistance where teams already communicate.
-
-> Embrace the power of Langflow in your Slack workflow to achieve seamless automation, smarter collaboration, and unparalleled efficiency.
 
 ## Features
 
