@@ -5,7 +5,7 @@ Short and sweet:
 - Integrate it into the enterprise Slack environment as an App
 - Start asking questions or give it some tasks, just like any other user or app in your team!
 
-In today’s dynamic workplace, efficiency and intelligent automation are paramount. [Langflow](https://github.com/langflow/langflow) brings the power of advanced language models and **AI agents** directly into your **Slack workflows**, enabling seamless automation, intelligent responses, and real-time assistance without ever leaving your chat window.
+In today’s dynamic workplace, efficiency and intelligent automation are paramount. [Langflow](https://github.com/langflow-ai/langflow) brings the power of advanced language models and **AI agents** directly into your **Slack workflows**, enabling seamless automation, intelligent responses, and real-time assistance without ever leaving your chat window.
 
 > Embrace the power of Langflow in your Slack workflow to achieve seamless automation, smarter collaboration, and unparalleled efficiency.
 
