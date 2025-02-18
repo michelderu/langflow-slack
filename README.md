@@ -1,9 +1,9 @@
 # Enhancing Slack Workflows with the Agentic Langflow Plugin
 
-Short and sweet:
-- Build any agentic flow simply by dragging and dropping in Langflow
-- Integrate it into the enterprise Slack environment as an App
-- Start asking questions or give it some tasks, just like any other user or app in your team!
+✨ Short and sweet:
+1. 🛠️ Build any agentic flow simply by dragging and dropping in Langflow
+2. 🔗 Integrate it into the enterprise Slack environment as an App
+3. 🗨️ Start asking questions or give it some tasks, just like any other user or app in your team!
 
 In today’s dynamic workplace, efficiency and intelligent automation are paramount. [Langflow](https://github.com/langflow-ai/langflow) brings the power of advanced language models and **AI agents** directly into your **Slack workflows**, enabling seamless automation, intelligent responses, and real-time assistance without ever leaving your chat window.
 
